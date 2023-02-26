@@ -1,0 +1,9 @@
+[{"role_id":1, "role_name":"admin_super", "role_isactive":1, "role_desc":"the head of the server"},
+ {"role_id":2, "role_name":"admin", "role_isactive":1, "role_desc":"below the super admin"},
+ {"role_id":4, "role_name":"qa", "role_isactive":0, "role_desc":"testing purpose"},
+ {"role_id":5, "role_name":"blog_writer", "role_isactive":0, "role_desc":"for  content write"},
+ {"role_id":6, "role_name":"email_manager", "role_isactive":1, "role_desc":"the one who manage all promotional emails"},
+ {"role_id":7, "role_name":"email_manager", "role_isactive":1, "role_desc":"the one who manage all promotional emails"},
+ {"role_id":8, "role_name":"promotional", "role_isactive":1, "role_desc":"the one who manage all promotional emails"},
+ {"role_id":10, "role_name":"Notification Manager", "role_isactive":1, "role_desc":"this role manages all notification"},
+ {"role_id":11, "role_name":"newsletter", "role_isactive":1, "role_desc":"newsletter email manager"}]

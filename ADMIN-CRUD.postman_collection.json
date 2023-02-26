@@ -1,0 +1,1195 @@
+{
+	"info": {
+		"_postman_id": "a52cff78-c630-42b0-9bbc-ff768db37de2",
+		"name": "ADMIN-CRUD",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "AuthADMIN-With_Token",
+			"item": [
+				{
+					"name": "DeleteProfile",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{SERVER_HOST}}/auth/home/deleteprofile",
+							"host": [
+								"{{SERVER_HOST}}"
+							],
+							"path": [
+								"auth",
+								"home",
+								"deleteprofile"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DeleteUser",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"jspanda\",\r\n    \"password\": \"admin123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{SERVER_HOST}}/auth/home/admin/deleteuser",
+							"host": [
+								"{{SERVER_HOST}}"
+							],
+							"path": [
+								"auth",
+								"home",
+								"admin",
+								"deleteuser"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UpdateProfile",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"const randomNumber = _.random(7000000001,9999999999)\r",
+									"pm.variables.set(\"PhNumber\", randomNumber )\r",
+									"\r",
+									"const moment = require('moment');\r",
+									"pm.variables.set(\"dob\", moment().format(\"YYYY-MM-DD\"));\r",
+									"\r",
+									"pm.variables.set(\"dob2\", moment(new Date(+(new Date()) - Math.floor(Math.random()*10000000000)))\r",
+									".format('YYYY-MM-DD'));\r",
+									"\r",
+									"const randomPin = _.random(110001,835325)\r",
+									"pm.variables.set(\"PinCode\", randomPin )\r",
+									"\r",
+									"const password =\"admin123\"\r",
+									"pm.variables.set(\"password\", password )\r",
+									"//////////////////////////////////////////////////////\r",
+									"const  year = _.random(1950,2023)\r",
+									"const month = _.random(01,12)\r",
+									"const date = _.random(01,31)\r",
+									"const fulldate = (year+'-'+month+'-'+date)\r",
+									"pm.variables.set(\"dobFinal\", fulldate )\r",
+									"//////////////////////////////////////////////////////\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"fullname\": \"{{$randomFullName}}\",\r\n    \"emailid\": \"{{$randomEmail}}\",\r\n    \"phnumber\": \"{{PhNumber}}\",\r\n    \"DOB\": \"{{dobFinal}}\",\r\n    \"country\": \"{{$randomCountry}}\",\r\n    \"state\": \"{{$randomCountryCode}}\",\r\n    \"city\": \"{{$randomCity}}\",\r\n    \"pincode\": \"{{PinCode}}\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:4000/auth/home/updateprofile",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"auth",
+								"home",
+								"updateprofile"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "AddUserByAdmin",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"adidash\",\r\n    \"password\": \"adidash\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{SERVER_HOST}}/auth/home/admin/add_user",
+							"host": [
+								"{{SERVER_HOST}}"
+							],
+							"path": [
+								"auth",
+								"home",
+								"admin",
+								"add_user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UpdateData",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"fullname\": \"test1\",\r\n    \"username\": \"test1\",\r\n    \"emailid\": \"test1\",\r\n    \"phnumber\": \"test1\",\r\n    \"DOB\": \"test1\",\r\n    \"country\": \"test1\",\r\n    \"state\": \"test1\",\r\n    \"city\": \"test1\",\r\n    \"pincode\": \"test1\",\r\n    \"password\": \"test1\",\r\n    \"cnfpassword\": \"test1\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{SERVER_HOST}}/auth/home/profile",
+							"host": [
+								"{{SERVER_HOST}}"
+							],
+							"path": [
+								"auth",
+								"home",
+								"profile"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "HOME",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:4000/auth/home",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"auth",
+								"home"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UpdateProfilePic",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status test\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"Body is correct\", function () {\r",
+									"    pm.response.to.have.body(\"Profile Pic uploaded\");\r",
+									"});\r",
+									"pm.test(\"response must be valid and have a body\", function () {\r",
+									"     pm.response.to.be.ok;\r",
+									"     pm.response.to.be.withBody;\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "profile_pic",
+									"type": "file",
+									"src": "/F:/Downloads/21MCA132.JPG"
+								},
+								{
+									"key": "username",
+									"value": "admin123",
+									"type": "default"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{SERVER_HOST}}/auth/home/profile/updateprofilepic",
+							"host": [
+								"{{SERVER_HOST}}"
+							],
+							"path": [
+								"auth",
+								"home",
+								"profile",
+								"updateprofilepic"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"auth": {
+				"type": "bearer",
+				"bearer": [
+					{
+						"key": "token",
+						"value": "ubvia7w6egvg4vb9rf84f8q42vbbv94bv94bvb4v46gvqb7vb9qb4v93v49qbv48bv9qb49gvbq9bv7q9t4bqq94bvbqyv924v8gvqvb27vb9742vbq232b9vb9b429vb42",
+						"type": "string"
+					}
+				]
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Forgot_Password_SubmitOTP",
+			"item": [
+				{
+					"name": "SubmitPassword",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJWX3VzZXJuYW1lIjoiQWx0YS5PSGFyYSIsIlZfZW1haWxpZCI6Imp5b3Rpc2hhbmthcnBhbmRhNTVAZ21haWwuY29tIiwiaWF0IjoxNjcwOTk0MTQxLCJleHAiOjE2NzA5OTQ3NDF9.NMnK32QmOolhr5y3-mfYotw-cOA8DzhSvSSEKqbstjY",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"otp\": \"159359\",\r\n    \"newpassword\": \"admin12345\",\r\n    \"cnfnewpassword\": \"admin12345\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{SERVER_HOST}}/auth/submitpassword",
+							"host": [
+								"{{SERVER_HOST}}"
+							],
+							"path": [
+								"auth",
+								"submitpassword"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"auth": {
+				"type": "bearer",
+				"bearer": [
+					{
+						"key": "token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJWX3VzZXJuYW1lIjoiYWRtaW4xMjMiLCJWX2VtYWlsaWQiOiJqeW90aXNoYW5rYXJwYW5kYTU1QGdtYWlsLmNvbSIsImlhdCI6MTY3NTY4NjI3MiwiZXhwIjoxNjc1Njg2ODcyfQ.QVPRNyYLTPwXwv_jKuoi0KyMMnyZUphlMrN6UCV7dn8",
+						"type": "string"
+					}
+				]
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Login_2FA_SubmitOtp",
+			"item": [
+				{
+					"name": "2FA_SbumitOtp",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"otp\": \"913210\",\r\n    \"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXNlcm5hbWUiOiJhZG1pbjEyMyIsInR3b0ZhY3RvckVuYWJsZWQiOnRydWUsImlhdCI6MTY3NTg1Njk5MywiZXhwIjoxNjc1ODYwNTkzfQ.yWtFdGT-p08cq23MvUZrDamwAe6Rs3qYxJTIUScTF0c\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{SERVER_HOST}}/auth//login/twoFAsubmitOTP",
+							"host": [
+								"{{SERVER_HOST}}"
+							],
+							"path": [
+								"auth",
+								"",
+								"login",
+								"twoFAsubmitOTP"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "2FAgenOTP",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXNlcm5hbWUiOiJhZG1pbjEyMyIsInR3b0ZhY3RvckVuYWJsZWQiOnRydWUsImlhdCI6MTY3NTc3NjQ5NywiZXhwIjoxNjc1NzgwMDk3fQ.fnpYdJ86kf45MBjwQvX-6nuS0wJf5oPjj2SQA-8fo90\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{SERVER_HOST}}/auth//login/twoFAgenerateOTP",
+							"host": [
+								"{{SERVER_HOST}}"
+							],
+							"path": [
+								"auth",
+								"",
+								"login",
+								"twoFAgenerateOTP"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Config Table",
+			"item": [
+				{
+					"name": "Add Config",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"footerLA\",\r\n    \"title\": \"Contact LA\",\r\n    \"description\": \"www.google.com/LA\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{SERVER_HOST}}/auth/home/config/add",
+							"host": [
+								"{{SERVER_HOST}}"
+							],
+							"path": [
+								"auth",
+								"home",
+								"config",
+								"add"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "View Config",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{SERVER_HOST}}/auth/home/config/view",
+							"host": [
+								"{{SERVER_HOST}}"
+							],
+							"path": [
+								"auth",
+								"home",
+								"config",
+								"view"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Config",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"config_id\": \"1\",\r\n    \"name\": \"footerIndia NEW\",\r\n    \"title\": \"Contact us\",\r\n    \"description\": \"www.google.com/india\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{SERVER_HOST}}/auth/home/config/update",
+							"host": [
+								"{{SERVER_HOST}}"
+							],
+							"path": [
+								"auth",
+								"home",
+								"config",
+								"update"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Config",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"admin123\",\r\n    \"config_id\": \"2\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{SERVER_HOST}}/auth/home/config/delete",
+							"host": [
+								"{{SERVER_HOST}}"
+							],
+							"path": [
+								"auth",
+								"home",
+								"config",
+								"delete"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Admin Section",
+			"item": [
+				{
+					"name": "UserRole",
+					"item": [
+						{
+							"name": "Admin/Role_Add",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"role_name\": \"promotional101\",\r\n    \"role_isactive\": true,\r\n    \"role_desc\": \"the one who manage all promotional emails\",\r\n    \"claim\": [\r\n        \"emailtemplate_view\",\r\n        \"emailtemplate_edit\",\r\n        \"emailtemplate_add\"\r\n    ]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{SERVER_HOST}}/auth/home/admin/add_roles",
+									"host": [
+										"{{SERVER_HOST}}"
+									],
+									"path": [
+										"auth",
+										"home",
+										"admin",
+										"add_roles"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "ROLE DATA MODULE DATA",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{SERVER_HOST}}/auth/home/admin/modules",
+									"host": [
+										"{{SERVER_HOST}}"
+									],
+									"path": [
+										"auth",
+										"home",
+										"admin",
+										"modules"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Admin/Role_View",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{SERVER_HOST}}/auth/home/admin/view_roles",
+									"host": [
+										"{{SERVER_HOST}}"
+									],
+									"path": [
+										"auth",
+										"home",
+										"admin",
+										"view_roles"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Admin/Claim_View",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"role_id\": \"11\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{SERVER_HOST}}/auth/home/admin/view_claims",
+									"host": [
+										"{{SERVER_HOST}}"
+									],
+									"path": [
+										"auth",
+										"home",
+										"admin",
+										"view_claims"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Admin/Role_Edit",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"role_id\": \"7\",\r\n    \"role_name\": \"email_manager\",\r\n    \"role_desc\": \"the one who manage all promotional emails\",\r\n    \"role_isactive\": true,\r\n    \"claim\": [\r\n        \"userlist_view\",\r\n        \"userlist_edit\",\r\n        \"userlist_add\",\r\n        \"userlist_delete\"\r\n    ]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{SERVER_HOST}}/auth/home/admin/edit_roles",
+									"host": [
+										"{{SERVER_HOST}}"
+									],
+									"path": [
+										"auth",
+										"home",
+										"admin",
+										"edit_roles"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Manage User",
+					"item": [
+						{
+							"name": "Admin/User_View",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"username\": \"admin123\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{SERVER_HOST}}/auth/home/admin/view_user",
+									"host": [
+										"{{SERVER_HOST}}"
+									],
+									"path": [
+										"auth",
+										"home",
+										"admin",
+										"view_user"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Login",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Username Can't be empty\", () => {\r",
+							"  pm.expect(pm.response.code).to.eql(400);\r",
+							"  pm.expect(pm.response.code).to.eql(400);\r",
+							"});\r",
+							"pm.test(\"Status test\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"pm.test(\"Body is correct\", function () {\r",
+							"    // pm.response.to.have.body(JSON);\r",
+							"    pm.response.to.be.json;\r",
+							"});\r",
+							"// pm.test(\"All data input\",function(){\r",
+							"//     pm.response.to.have.all.keys('username','password');\r",
+							"// });\r",
+							"pm.test(\"The response has all properties\", () => {\r",
+							"    //parse the response JSON and test three properties\r",
+							"    const responseJson = pm.response.json();\r",
+							"    // pm.expect(responseJson.type).to.eql('vip');\r",
+							"    pm.expect(responseJson.token).to.be.a('string');\r",
+							"    // pm.expect(responseJson.id).to.have.lengthOf(1);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"response must be valid and have a body\", function () {\r",
+							"     pm.response.to.be.ok;\r",
+							"     pm.response.to.be.withBody;\r",
+							"    //  pm.response.to.be.json;\r",
+							"});\r",
+							"pm.test(\"Successful POST request\", function () {\r",
+							"    pm.expect(pm.response.code).to.be.oneOf([200,201]);\r",
+							"});\r",
+							"pm.test(\"Status code name has string\", () => {\r",
+							"  pm.response.to.have.status(\"OK\");\r",
+							"});\r",
+							"pm.test(\"Body contains string\",() => {\r",
+							"  pm.expect(pm.response.text()).to.include(\"token\");\r",
+							"});\r",
+							"// pm.test(\"Content-Type header is present\", () => {\r",
+							"//   pm.response.to.have.body.header(\"username\");\r",
+							"// });\r",
+							"// const jsonData = pm.response.json();\r",
+							"// pm.test(\"Test data type of the response\", () => {\r",
+							"//   pm.expect(jsonData).to.be.an(\"object\");\r",
+							"//   pm.expect(jsonData.name).to.be.a(\"string\");\r",
+							"//   pm.expect(jsonData.age).to.be.a(\"number\");\r",
+							"//   pm.expect(jsonData.hobbies).to.be.an(\"array\");\r",
+							"//   pm.expect(jsonData.website).to.be.undefined;\r",
+							"//   pm.expect(jsonData.email).to.be.null;\r",
+							"// });"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\": \"admin123\",\r\n    \"password\": \"admin123\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{SERVER_HOST}}/auth/login",
+					"host": [
+						"{{SERVER_HOST}}"
+					],
+					"path": [
+						"auth",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Signup",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"const randomNumber = _.random(7000000001,9999999999)\r",
+							"pm.variables.set(\"PhNumber\", randomNumber )\r",
+							"\r",
+							"const moment = require('moment');\r",
+							"pm.variables.set(\"dob\", moment().format(\"YYYY-MM-DD\"));\r",
+							"\r",
+							"pm.variables.set(\"dob2\", moment(new Date(+(new Date()) - Math.floor(Math.random()*10000000000)))\r",
+							".format('YYYY-MM-DD'));\r",
+							"\r",
+							"const randomPin = _.random(110001,835325)\r",
+							"pm.variables.set(\"PinCode\", randomPin )\r",
+							"\r",
+							"const password =\"admin123\"\r",
+							"pm.variables.set(\"password\", password )\r",
+							"//////////////////////////////////////////////////////\r",
+							"const  year = _.random(1950,2023)\r",
+							"const month = _.random(01,12)\r",
+							"const date = _.random(01,31)\r",
+							"const fulldate = (year+'-'+month+'-'+date)\r",
+							"pm.variables.set(\"dobFinal\", fulldate )\r",
+							"//////////////////////////////////////////////////////\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status test\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"pm.test(\"Body is correct\", function () {\r",
+							"    pm.response.to.have.body(\"Table CREATED\");\r",
+							"});\r",
+							"// pm.test(\"All data input\",function(){\r",
+							"//     pm.response.to.have.all.keys('fullname', 'username', 'emailid', 'phnumber', 'DOB', 'country', 'state', 'city', 'pincode', 'password', 'cnfpassword');\r",
+							"// });\r",
+							"\r",
+							"pm.test(\"response must be valid and have a body\", function () {\r",
+							"     pm.response.to.be.ok;\r",
+							"     pm.response.to.be.withBody;\r",
+							"    //  pm.response.to.be.json;\r",
+							"});\r",
+							"pm.test(\"Body matches string\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"Table CREATED\");\r",
+							"});\r",
+							"pm.test(\"Successful POST request\", function () {\r",
+							"    pm.expect(pm.response.code).to.be.oneOf([200,201]);\r",
+							"});\r",
+							"pm.test(\"\",function(){\r",
+							"    pm.expect\r",
+							"})\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"fullname\": \"{{$randomFullName}}\",\r\n    \"username\": \"{{$randomUserName}}\",\r\n    \"emailid\": \"{{$randomEmail}}\",\r\n    \"phnumber\": \"{{PhNumber}}\",\r\n    \"DOB\": \"{{dobFinal}}\",\r\n    \"country\": \"{{$randomCountry}}\",\r\n    \"state\": \"{{$randomCountryCode}}\",\r\n    \"city\": \"{{$randomCity}}\",\r\n    \"pincode\": \"{{PinCode}}\",\r\n    \"password\": \"{{password}}\",\r\n    \"cnfpassword\": \"{{password}}\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{SERVER_HOST}}/auth/signup",
+					"host": [
+						"{{SERVER_HOST}}"
+					],
+					"path": [
+						"auth",
+						"signup"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Signup2",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "{{SERVER_HOST}}/auth/signup?fullname=Jyotishankar Panda&username=jspanda&emailid=jsp@gmail.com&phnumber=9556443112&DOB=1999-02-14&country=india&state=odisha&city=balasore&pincode=756043&password=admin123&cnfpassword=admin123",
+					"host": [
+						"{{SERVER_HOST}}"
+					],
+					"path": [
+						"auth",
+						"signup"
+					],
+					"query": [
+						{
+							"key": "fullname",
+							"value": "Jyotishankar Panda"
+						},
+						{
+							"key": "username",
+							"value": "jspanda"
+						},
+						{
+							"key": "emailid",
+							"value": "jsp@gmail.com"
+						},
+						{
+							"key": "phnumber",
+							"value": "9556443112"
+						},
+						{
+							"key": "DOB",
+							"value": "1999-02-14"
+						},
+						{
+							"key": "country",
+							"value": "india"
+						},
+						{
+							"key": "state",
+							"value": "odisha"
+						},
+						{
+							"key": "city",
+							"value": "balasore"
+						},
+						{
+							"key": "pincode",
+							"value": "756043"
+						},
+						{
+							"key": "password",
+							"value": "admin123"
+						},
+						{
+							"key": "cnfpassword",
+							"value": "admin123"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Forgot_Password",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\": \"admin123\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{SERVER_HOST}}/auth/forgotpassword",
+					"host": [
+						"{{SERVER_HOST}}"
+					],
+					"path": [
+						"auth",
+						"forgotpassword"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Test Request",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"jsp\",\r\n    \"title\":\"panda\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{SERVER_HOST}}/auth/test",
+					"host": [
+						"{{SERVER_HOST}}"
+					],
+					"path": [
+						"auth",
+						"test"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "New Request",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\": \"Frederick12\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{SERVER_HOST}}/auth/home/profile",
+					"host": [
+						"{{SERVER_HOST}}"
+					],
+					"path": [
+						"auth",
+						"home",
+						"profile"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add Email Template",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Adarsh\",\r\n    \"title\": \"Client Mail number 2\",\r\n    \"description\": \"This is the second email dsj sd cskad casd ca sdc asd cias dic aisdc iausdg ciuags dicu gaisdg cias dgci aidgc iasdg ciasd ica sdc aisd ci\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{SERVER_HOST}}/auth/home/emailtemp/add",
+					"host": [
+						"{{SERVER_HOST}}"
+					],
+					"path": [
+						"auth",
+						"home",
+						"emailtemp",
+						"add"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "View Email Template",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{SERVER_HOST}}/auth/home/emailtemp/view",
+					"host": [
+						"{{SERVER_HOST}}"
+					],
+					"path": [
+						"auth",
+						"home",
+						"emailtemp",
+						"view"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Email Template",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\":\"admin111\",\r\n    \"id\":\"10\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{SERVER_HOST}}/auth/home/emailtemp/delete",
+					"host": [
+						"{{SERVER_HOST}}"
+					],
+					"path": [
+						"auth",
+						"home",
+						"emailtemp",
+						"delete"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Location get",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://extreme-ip-lookup.com/json/?key=6CScVQ07KPz2qmLqoNu7",
+					"protocol": "https",
+					"host": [
+						"extreme-ip-lookup",
+						"com"
+					],
+					"path": [
+						"json",
+						""
+					],
+					"query": [
+						{
+							"key": "key",
+							"value": "6CScVQ07KPz2qmLqoNu7"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Location Set",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"businessName\": \"\",\r\n    \"businessWebsite\": \"\",\r\n    \"city\": \"Ahmedabad\",\r\n    \"continent\": \"Asia\",\r\n    \"country\": \"India\",\r\n    \"countryCode\": \"IN\",\r\n    \"ipName\": \"evincedev.com\",\r\n    \"ipType\": \"Residential\",\r\n    \"isp\": \"BlazeNet's Network\",\r\n    \"lat\": \"23.02579\",\r\n    \"lon\": \"72.58727\",\r\n    \"org\": \"BlazeNet's Network\",\r\n    \"query\": \"202.131.112.74\",\r\n    \"region\": \"Gujarat\",\r\n    \"status\": \"success\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{SERVER_HOST}}/auth//locationData",
+					"host": [
+						"{{SERVER_HOST}}"
+					],
+					"path": [
+						"auth",
+						"",
+						"locationData"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

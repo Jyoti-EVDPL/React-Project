@@ -1,0 +1,13 @@
+[{"roleclaim_id":1, "role_id":1, "roleclaim_name":"emailtemplate_view"},
+ {"roleclaim_id":2, "role_id":1, "roleclaim_name":"emailtemplate_edit"},
+ {"roleclaim_id":3, "role_id":1, "roleclaim_name":"emailtemplate_add"},
+ {"roleclaim_id":4, "role_id":1, "roleclaim_name":"emailtemplate_delete"},
+ {"roleclaim_id":5, "role_id":2, "roleclaim_name":"emailtemplate_view"},
+ {"roleclaim_id":18, "role_id":10, "roleclaim_name":"emailtemplate_view"},
+ {"roleclaim_id":19, "role_id":10, "roleclaim_name":"emailtemplate_edit"},
+ {"roleclaim_id":20, "role_id":10, "roleclaim_name":"emailtemplate_add"},
+ {"roleclaim_id":21, "role_id":10, "roleclaim_name":"emailtemplate_delete"},
+ {"roleclaim_id":22, "role_id":11, "roleclaim_name":"emailtemplate_view"},
+ {"roleclaim_id":23, "role_id":11, "roleclaim_name":"emailtemplate_edit"},
+ {"roleclaim_id":24, "role_id":11, "roleclaim_name":"emailtemplate_add"},
+ {"roleclaim_id":25, "role_id":11, "roleclaim_name":"emailtemplate_delete"}]
