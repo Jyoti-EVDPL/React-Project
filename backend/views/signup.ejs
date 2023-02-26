@@ -1,0 +1,33 @@
+<%-include('header')-%>
+
+    <div class="text-center center-div" id="signup">
+        <div class="container w-25 border py-5">
+            <div class="title">
+                <h2 class="font-weight-bold">Signup System</h2>
+                <span>Signup For New user</span>
+            </div>
+            <form action="/route/signup" method="POST" class="pt-3">
+                <div class="form-group">
+                    <input type="fullname" class="form-control" placeholder="fullname" name="fullname" />
+                    <small class="form-text text-muted text-left">Your fullname</small>
+                </div>
+                <div class="form-group">
+                    <input type="username" class="form-control" placeholder="username" name="username" />
+                    <small class="form-text text-muted text-left">Your username</small>
+                </div>
+                <div class="form-group">
+                    <input type="emailid" class="form-control" placeholder="emailid" name="emailid" />
+                    <small class="form-text text-muted text-left">Your email address</small>
+                </div>
+                <div class="form-group">
+                    <input type="password" class="form-control" name="password" placeholder="password">
+                    <small class="form-text text-muted text-left">Your password</small>
+                </div>
+                <button type="submit" class="btn btn-success rounded-pill">Submit</button>
+                <div class="pt-3"><span><a class="nav-link" href="route/logout"> For Existing user</a></span></div>
+            </form>
+        </div>
+    </div>
+    
+    <%-include('footer')-%>
+    <!-- <a class="nav-link" href="/about">About</a> -->

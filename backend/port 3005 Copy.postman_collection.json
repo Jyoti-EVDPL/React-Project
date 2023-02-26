@@ -1,0 +1,143 @@
+{
+	"info": {
+		"_postman_id": "f5648153-3db9-4a23-a678-3fb7b7970e97",
+		"name": "port 3005 Copy",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "localhost:3005/auth/update",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\": \"test1\",\r\n    \"password\": \"test1\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3005/auth/loginview",
+					"host": [
+						"localhost"
+					],
+					"port": "3005",
+					"path": [
+						"auth",
+						"loginview"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:3999/auth/loginview",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\": \"test1\",\r\n    \"password\": \"test1\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3999/auth/login?username=Coralie.Emard90&password=admin123",
+					"host": [
+						"localhost"
+					],
+					"port": "3999",
+					"path": [
+						"auth",
+						"login"
+					],
+					"query": [
+						{
+							"key": "username",
+							"value": "Coralie.Emard90"
+						},
+						{
+							"key": "password",
+							"value": "admin123"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:3005/auth/signup",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\": \"test1\",\r\n    \"password\": \"test1\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3005/auth/signup",
+					"host": [
+						"localhost"
+					],
+					"port": "3005",
+					"path": [
+						"auth",
+						"signup"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:3005/auth/homepage",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\": \"test1\",\r\n    \"password\": \"test1\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3005/auth/homepage",
+					"host": [
+						"localhost"
+					],
+					"port": "3005",
+					"path": [
+						"auth",
+						"homepage"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
