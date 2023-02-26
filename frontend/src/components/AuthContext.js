@@ -15,4 +15,4 @@ function AuthContext() {
   )
 }
 
-export default AuthContext
+export default AuthContext;
